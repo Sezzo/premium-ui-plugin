@@ -42,7 +42,7 @@ If the output reads like a generic design review without system references or fo
 
 ## Installation
 
-1. Copy the `.claude-premium-ui-plugin` directory to your repository root
+1. Clone or copy the entire repository into your project (skills, examples, and prompts live at the top level alongside `.claude-premium-ui-plugin`)
 2. Run the `design-system-setup` skill to initialize `AGENTS.md` and `CLAUDE.md`
 3. Review and customize the generated files for your project
 
@@ -113,6 +113,30 @@ Audits and defines accessibility standards based on WCAG 2.2, covering screen re
 2. `token-architecture` – Define or refine foundational tokens
 3. `brand-ui-alignment` – Check brand expression
 4. `design-critique` – Critical review of system quality
+
+## Examples
+
+The `examples/` directory contains 3 end-to-end workflow walkthroughs:
+
+- **`component-library-setup.md`** — Setting up a component library from scratch
+- **`dashboard-redesign.md`** — Redesigning a dashboard with premium UI standards
+- **`form-redesign.md`** — Redesigning forms for consistency and usability
+
+## Ready-to-Use Prompts
+
+The `prompts/` directory contains 7 copy-paste prompts you can use directly with Claude:
+
+| Prompt | Skill |
+|--------|-------|
+| `01-design-critique-landing-page.md` | design-critique |
+| `02-component-spec-search-bar.md` | component-implementation-spec |
+| `03-token-architecture-ecommerce.md` | token-architecture |
+| `04-premium-refinement-dashboard.md` | premium-ui-refinement |
+| `05-ux-consistency-audit.md` | ux-consistency-audit |
+| `06-brand-ui-alignment.md` | brand-ui-alignment |
+| `07-screen-composition-pricing.md` | screen-composition-design |
+
+See [`prompts/README.md`](prompts/README.md) for details.
 
 ## Core Principles
 
