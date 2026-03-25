@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "author": "sezzo",
   "license": "MIT",
-  "repository": "https://github.com/sezzo/premium-ui-plugin",
-  "homepage": "https://github.com/sezzo/premium-ui-plugin#readme",
+  "repository": "https://github.com/Sezzo/premium-ui-plugin",
+  "homepage": "https://github.com/Sezzo/premium-ui-plugin#readme",
   "keywords": [
     "design-system",
     "ui",
@@ -15,5 +15,55 @@
     "component-architecture",
     "design-critique",
     "ux-audit"
+  ],
+  "skills": [
+    {
+      "name": "design-system-setup",
+      "description": "Initializes or updates the repository's premium UI design-system setup by creating or patching AGENTS.md and CLAUDE.md."
+    },
+    {
+      "name": "design-system-review",
+      "description": "Reviews an existing design system for consistency, completeness, and premium quality standards."
+    },
+    {
+      "name": "ui-component-design",
+      "description": "Designs new reusable UI components with proper states, variants, and design-system integration."
+    },
+    {
+      "name": "premium-ui-refinement",
+      "description": "Elevates existing UI to feel more premium through refined spacing, typography, hierarchy, and details."
+    },
+    {
+      "name": "ux-consistency-audit",
+      "description": "Audits screens and flows for interaction consistency, pattern reuse, clarity, and UX maturity."
+    },
+    {
+      "name": "screen-composition-design",
+      "description": "Builds or restructures full screens with proper layout, hierarchy, and component usage."
+    },
+    {
+      "name": "token-architecture",
+      "description": "Defines scalable token systems (colors, typography, spacing, etc.) for design system foundations."
+    },
+    {
+      "name": "component-implementation-spec",
+      "description": "Creates implementation-ready engineering handoff specifications for components."
+    },
+    {
+      "name": "design-critique",
+      "description": "Provides sharp, high-standard critical review of design work against premium UI principles."
+    },
+    {
+      "name": "brand-ui-alignment",
+      "description": "Checks whether UI properly expresses the intended brand character and values."
+    },
+    {
+      "name": "responsive-adaptive-design",
+      "description": "Defines responsive layout strategies, breakpoint systems, mobile-first patterns, and adaptive behavior across all viewport sizes."
+    },
+    {
+      "name": "accessibility",
+      "description": "Audits and defines accessibility standards based on WCAG 2.2, covering screen reader support, keyboard navigation, color contrast, and inclusive design."
+    }
   ]
 }

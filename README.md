@@ -17,6 +17,29 @@ This plugin is designed for teams who want:
 - **System-thinking discipline** in component architecture
 - **Serious, trustworthy product aesthetics** that avoid AI clichés
 
+## 60 Seconds Quick Start
+
+**1. Install** — Copy the `.claude-premium-ui-plugin` directory to your repository root.
+
+**2. Test it** — Paste this prompt into Claude:
+
+```
+Review this UI critically using the design-critique skill:
+
+A settings page with white cards on gray background, three different input field 
+styles (rounded text inputs, square dropdowns, toggle switches from a different 
+library), no focus states, and all text in 14px regular weight. The target product 
+is a B2B enterprise analytics platform.
+```
+
+**3. Verify** — The response should include:
+- A structured critique with severity ratings (not just generic advice)
+- Specific callouts for component inconsistency and missing interaction states
+- Token-based recommendations (e.g., `typography.heading.sm`, `radius.md`)
+- A priority action table
+
+If the output reads like a generic design review without system references or forbidden-pattern awareness, the plugin is not loaded correctly.
+
 ## Installation
 
 1. Copy the `.claude-premium-ui-plugin` directory to your repository root
@@ -59,6 +82,14 @@ Provides sharp, high-standard critical review of design work against premium UI 
 
 **`brand-ui-alignment`**  
 Checks whether UI properly expresses the intended brand character and values.
+
+### Cross-Cutting Skills
+
+**`responsive-adaptive-design`**  
+Defines responsive layout strategies, breakpoint systems, mobile-first patterns, and adaptive behavior across all viewport sizes.
+
+**`accessibility`**  
+Audits and defines accessibility standards based on WCAG 2.2, covering screen reader support, keyboard navigation, color contrast, and inclusive design.
 
 ## Recommended Workflows
 
