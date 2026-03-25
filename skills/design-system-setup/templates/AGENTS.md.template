@@ -1,0 +1,118 @@
+# AGENTS.md
+
+> This file is the cross-agent operating guide for this repository.
+> It defines the premium UI standard, forbidden patterns, available skills, and recommended workflows.
+> All coding agents working in this repository must follow these rules.
+
+## Premium UI Standard
+
+This repository follows a premium UI standard. All UI work must be:
+
+- Serious, trustworthy, and professional
+- System-driven, not ad-hoc or decorative
+- Consistent across all screens, components, and states
+- Accessible (WCAG 2.2 AA minimum)
+- Responsive (mobile-first, all breakpoints considered)
+- Aligned with the design system — no one-off styling
+
+## Non-Negotiable Principles
+
+- Every component must belong to the design system
+- Every screen must follow established layout patterns
+- Every interaction must be consistent with existing patterns
+- Typography, spacing, and color must come from the token system
+- Accessibility is not optional — it is a baseline requirement
+- Responsive behavior must be defined, not assumed
+
+## Forbidden Visual Patterns
+
+Do not use any of the following:
+
+- Emojis (unless explicitly justified by product requirements)
+- Sparkle icons, magic motifs, or AI gimmick visuals
+- Robot-head, glowing-brain, or floating-orb AI clichés
+- Childish illustrations or sticker-like iconography
+- Decorative gradients without design-system purpose
+- Excessive glow, blur, or glass effects
+- Fake premium through layered effects
+- Generic startup/SaaS template aesthetics
+- Trendy styling without design-system logic
+
+## Available Skills
+
+This repository uses the following 12 skills for premium UI and design-system work:
+
+| Skill | Purpose |
+|-------|---------|
+| `design-system-setup` | Initialize or update repository agent configuration (AGENTS.md, CLAUDE.md) |
+| `design-system-review` | Review an existing design system for quality and completeness |
+| `ui-component-design` | Design new reusable UI components with proper states and variants |
+| `premium-ui-refinement` | Elevate existing UI to feel more premium and polished |
+| `ux-consistency-audit` | Audit cross-screen UX coherence and pattern consistency |
+| `screen-composition-design` | Build or restructure full screens with proper layout and hierarchy |
+| `token-architecture` | Define or audit scalable token systems (colors, spacing, typography) |
+| `component-implementation-spec` | Create implementation-ready engineering handoff specifications |
+| `design-critique` | Provide sharp, high-standard critical review of design work |
+| `brand-ui-alignment` | Check whether UI expresses the intended brand character |
+| `responsive-adaptive-design` | Define responsive strategies, breakpoints, and adaptive behavior |
+| `accessibility` | Audit or define accessibility standards (WCAG 2.2 compliance) |
+
+## Skill Routing
+
+Use this guide to select the right skill for the task:
+
+- **Starting a new repository?** → `design-system-setup`
+- **Reviewing an existing design system?** → `design-system-review`
+- **Designing a new component?** → `ui-component-design`
+- **Making UI feel more premium?** → `premium-ui-refinement`
+- **Checking UX consistency across screens?** → `ux-consistency-audit`
+- **Building or restructuring a screen?** → `screen-composition-design`
+- **Defining or auditing tokens?** → `token-architecture`
+- **Creating engineering handoff specs?** → `component-implementation-spec`
+- **Critiquing design quality?** → `design-critique`
+- **Checking brand alignment?** → `brand-ui-alignment`
+- **Defining responsive behavior?** → `responsive-adaptive-design`
+- **Auditing accessibility?** → `accessibility`
+
+## Recommended Workflows
+
+### New Component
+1. `ui-component-design` → design the component
+2. `design-system-review` → verify system fit
+3. `premium-ui-refinement` → polish to premium quality
+4. `component-implementation-spec` → create handoff spec
+5. `accessibility` → verify accessibility compliance
+
+### New Screen
+1. `screen-composition-design` → build the layout
+2. `design-system-review` → verify system fit
+3. `premium-ui-refinement` → polish to premium quality
+4. `ux-consistency-audit` → check cross-screen consistency
+5. `responsive-adaptive-design` → define responsive behavior
+6. `accessibility` → verify accessibility compliance
+
+### System Maturity
+1. `design-system-review` → assess current state
+2. `token-architecture` → strengthen token foundations
+3. `brand-ui-alignment` → verify brand expression
+4. `design-critique` → identify remaining weaknesses
+
+### Accessibility Audit
+1. `accessibility` → run full WCAG audit
+2. `ux-consistency-audit` → check consistency of accessible patterns
+3. `premium-ui-refinement` → ensure fixes maintain premium quality
+4. `component-implementation-spec` → document accessible implementations
+
+### Responsive Redesign
+1. `responsive-adaptive-design` → define breakpoint strategy
+2. `screen-composition-design` → restructure layouts
+3. `ui-component-design` → adapt components for all viewports
+4. `premium-ui-refinement` → polish across breakpoints
+5. `accessibility` → verify touch targets and mobile accessibility
+
+### Full Design System Bootstrap
+1. `design-system-setup` → initialize repository configuration
+2. `token-architecture` → define token foundations
+3. `brand-ui-alignment` → establish brand expression
+4. `design-system-review` → validate the system
+5. `design-critique` → final quality check

@@ -1,0 +1,81 @@
+# CLAUDE.md
+
+> This file is the Claude-specific operating guide for this repository.
+> It defines the premium UI standard, forbidden patterns, skill routing, and workflows.
+> Follow these rules for all UI and design-system work in this repository.
+
+## Premium UI Standard
+
+All UI work in this repository must meet a premium standard:
+
+- Serious, trustworthy, professional — no gimmicks
+- System-driven — every decision backed by the design system
+- Consistent — across screens, components, states, and breakpoints
+- Accessible — WCAG 2.2 AA minimum, no exceptions
+- Responsive — mobile-first, all viewports considered
+- Brand-aligned — UI must express the intended brand character
+
+## Forbidden Patterns
+
+Never use:
+
+- Emojis (unless explicitly required by product spec)
+- Sparkle icons, magic motifs, AI gimmick visuals
+- Robot-head, glowing-brain, floating-orb clichés
+- Childish illustrations, sticker-like iconography
+- Decorative gradients without design-system purpose
+- Excessive glow, blur, or glass effects
+- Fake premium through layered effects
+- Generic startup/SaaS template aesthetics
+- Trendy styling without design-system logic
+
+## Skill Routing
+
+When working on UI tasks, select the appropriate skill:
+
+| Task | Skill |
+|------|-------|
+| Initialize or update agent config | `design-system-setup` |
+| Review a design system | `design-system-review` |
+| Design a new component | `ui-component-design` |
+| Make UI more premium | `premium-ui-refinement` |
+| Audit UX consistency | `ux-consistency-audit` |
+| Build or restructure a screen | `screen-composition-design` |
+| Define or audit tokens | `token-architecture` |
+| Create engineering handoff spec | `component-implementation-spec` |
+| Critique design quality | `design-critique` |
+| Check brand alignment | `brand-ui-alignment` |
+| Define responsive behavior | `responsive-adaptive-design` |
+| Audit accessibility | `accessibility` |
+
+## Workflows
+
+### New Component
+`ui-component-design` → `design-system-review` → `premium-ui-refinement` → `component-implementation-spec` → `accessibility`
+
+### New Screen
+`screen-composition-design` → `design-system-review` → `premium-ui-refinement` → `ux-consistency-audit` → `responsive-adaptive-design` → `accessibility`
+
+### System Maturity
+`design-system-review` → `token-architecture` → `brand-ui-alignment` → `design-critique`
+
+### Accessibility Audit
+`accessibility` → `ux-consistency-audit` → `premium-ui-refinement` → `component-implementation-spec`
+
+### Responsive Redesign
+`responsive-adaptive-design` → `screen-composition-design` → `ui-component-design` → `premium-ui-refinement` → `accessibility`
+
+### Full Bootstrap
+`design-system-setup` → `token-architecture` → `brand-ui-alignment` → `design-system-review` → `design-critique`
+
+## Quality Gate
+
+Before completing any UI task, verify:
+
+- [ ] Component belongs to the design system
+- [ ] Tokens are used for all visual properties
+- [ ] No forbidden patterns are present
+- [ ] Accessibility requirements are met
+- [ ] Responsive behavior is defined
+- [ ] Cross-screen consistency is maintained
+- [ ] Brand alignment is preserved
