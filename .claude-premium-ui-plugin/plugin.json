@@ -1,5 +1,19 @@
 {
   "name": "Premium UI Plugin",
   "description": "A professional design system plugin that establishes and enforces repository-wide UI standards. Provides skills for premium UI design, component architecture, consistency audits, and design critique. Prevents generic startup aesthetics and enforces thoughtful, serious, and trustworthy product design.",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "author": "sezzo",
+  "license": "MIT",
+  "repository": "https://github.com/sezzo/premium-ui-plugin",
+  "homepage": "https://github.com/sezzo/premium-ui-plugin#readme",
+  "keywords": [
+    "design-system",
+    "ui",
+    "claude",
+    "plugin",
+    "premium-ui",
+    "component-architecture",
+    "design-critique",
+    "ux-audit"
+  ]
 }

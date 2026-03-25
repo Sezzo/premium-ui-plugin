@@ -123,3 +123,32 @@ This plugin explicitly rejects:
 ### With Claude Desktop
 
 Ensure this plugin is loaded in your Claude Desktop configuration. Use skill names in your prompts:
+
+```
+"Review my design system for consistency issues" → triggers design-system-review
+"Design a new button component" → triggers ui-component-design
+"Make this screen feel more premium" → triggers premium-ui-refinement
+```
+
+### With Claude Code
+
+Reference the plugin directory in your project. Claude will automatically detect available skills and route tasks accordingly.
+
+## Compatibility & Requirements
+
+- **Claude Desktop** or **Claude Code** with plugin support
+- No external dependencies required
+- Works with any frontend framework or design tool
+- Skills are framework-agnostic and focus on design principles, not implementation details
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## Author
+
+Created by **sezzo** — building tools for serious, trustworthy product design.
