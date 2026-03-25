@@ -53,5 +53,14 @@ Always provide:
 5. What Would Strengthen It Most
 6. Final Verdict on Overall Maturity
 
+## Related Skills
+
+- **design-system-review** — System-Bewertung: Während die Critique einzelne Screens/Komponenten bewertet, prüft der Review das gesamte Design System auf Kohärenz.
+- **premium-ui-refinement** — Premium-Qualität: Identifizierte Schwächen aus der Critique können durch gezieltes Refinement behoben werden.
+- **ux-consistency-audit** — Konsistenzprüfung: Ergänzt die Critique um eine systematische Prüfung der Konsistenz über alle Screens hinweg.
+- **brand-ui-alignment** — Brand-Ausrichtung: Die Critique sollte bewerten, ob das Design die Brand-Identität überzeugend transportiert.
+- **accessibility** — Barrierefreiheit: Accessibility-Aspekte sollten Teil jeder Design-Kritik sein.
+- **screen-composition-design** — Screen-Komposition: Liefert die Kompositionsregeln, gegen die eine Critique die Layout-Qualität bewerten kann.
+
 ## Final Standard
 A strong critique should create clarity, not comfort.

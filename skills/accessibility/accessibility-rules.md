@@ -248,3 +248,107 @@ Every page must have:
 - [ ] Verify all form errors are announced by screen reader
 - [ ] Check all interactive elements have accessible names
 - [ ] Verify no content is conveyed by color alone
+
+## WCAG Level Prioritization
+
+### Level A — Baseline (Must Have)
+These are non-negotiable. Failure at Level A means the product is fundamentally inaccessible.
+
+**Priority A criteria to fix first:**
+1. **Keyboard access (2.1.1)** — All functionality must work with keyboard
+2. **No keyboard trap (2.1.2)** — Focus must never get stuck
+3. **Text alternatives (1.1.1)** — All images, icons, and charts need alt text
+4. **Info and relationships (1.3.1)** — Semantic HTML, proper headings, form labels
+5. **Error identification (3.3.1)** — Errors must be clearly described
+
+### Level AA — Standard (Should Have)
+This is the target for most products. Level AA satisfies most legal requirements.
+
+**Priority AA criteria:**
+1. **Color contrast (1.4.3, 1.4.11)** — Text 4.5:1, UI components 3:1
+2. **Focus visible (2.4.7)** — Keyboard focus must be clearly visible
+3. **Error suggestion (3.3.3)** — Error messages must suggest how to fix
+4. **Status messages (4.1.3)** — Dynamic updates announced to screen readers
+5. **Target size (2.5.8)** — Touch targets minimum 24×24px
+
+### Level AAA — Enhanced (Nice to Have)
+Target selectively based on audience needs. Full AAA compliance is rarely required.
+
+**Valuable AAA criteria to consider:**
+- Enhanced contrast (1.4.6) — 7:1 for normal text
+- Sign language (1.2.6) — For video-heavy products
+- Abbreviations (3.1.4) — For technical/medical products
+- Reading level (3.1.5) — For public-facing government/health products
+
+## Recommended Tool Stack
+
+These are recommendations — choose based on your workflow and tech stack.
+
+### Automated Testing Tools
+
+| Tool | Type | Best For | Cost |
+|------|------|----------|------|
+| **axe DevTools** | Browser extension + CI | Comprehensive automated testing, CI/CD integration | Free (core) / Paid (pro) |
+| **Lighthouse** | Built into Chrome | Quick audits during development | Free |
+| **WAVE** | Browser extension | Visual accessibility evaluation with inline annotations | Free |
+| **eslint-plugin-jsx-a11y** | ESLint plugin | Catching JSX accessibility issues at build time | Free |
+| **pa11y** | CLI / CI tool | Automated testing in CI pipelines | Free |
+
+### Manual Testing Tools
+
+| Tool | Type | Best For | Cost |
+|------|------|----------|------|
+| **NVDA** | Screen reader (Windows) | Testing screen reader experience on Windows | Free |
+| **VoiceOver** | Screen reader (macOS/iOS) | Testing on Apple platforms | Free (built-in) |
+| **TalkBack** | Screen reader (Android) | Testing on Android devices | Free (built-in) |
+| **Colour Contrast Analyser** | Desktop app | Manual contrast checking with eyedropper | Free |
+| **Accessibility Insights** | Browser extension | Guided manual testing with checklists | Free |
+
+### Design Tools
+
+| Tool | Type | Best For | Cost |
+|------|------|----------|------|
+| **Stark** | Figma/Sketch plugin | Contrast checking and vision simulation in design tools | Free / Paid |
+| **A11y Annotation Kit** | Figma library | Annotating designs with accessibility specs | Free |
+
+### Recommended Minimum Setup
+1. **axe DevTools** browser extension for development
+2. **eslint-plugin-jsx-a11y** for build-time checks (if using React/JSX)
+3. **NVDA** or **VoiceOver** for manual screen reader testing
+4. **Lighthouse** for periodic audits
+
+## Legal Context
+
+**Note:** This section provides general awareness, not legal advice. Consult legal counsel for your specific situation and jurisdiction.
+
+### European Accessibility Act (EAA)
+- **Effective:** June 28, 2025
+- **Scope:** Products and services sold in the EU, including websites, mobile apps, e-commerce, and digital services
+- **Standard:** References EN 301 549, which maps to WCAG 2.1 Level AA
+- **Applies to:** Both B2C and B2B products offered in EU markets
+- **Enforcement:** National authorities in each EU member state
+
+### Americans with Disabilities Act (ADA)
+- **Scope:** US businesses, including web-based services
+- **Standard:** No explicit WCAG level mandated, but courts consistently reference WCAG 2.0/2.1 Level AA
+- **Risk:** Increasing litigation — thousands of web accessibility lawsuits filed annually
+- **Recommendation:** Target WCAG 2.2 Level AA to minimize legal risk
+
+### EN 301 549
+- **Scope:** European standard for ICT accessibility
+- **Required for:** Public sector procurement in the EU
+- **Standard:** Maps directly to WCAG 2.1 Level AA with additional requirements for software and hardware
+- **Relevance:** If your product is sold to government or public sector clients in Europe
+
+### Section 508 (US)
+- **Scope:** US federal agencies and their contractors
+- **Standard:** References WCAG 2.0 Level AA
+- **Relevance:** Required if your product is used by or sold to US government agencies
+
+### Practical Recommendation
+Target **WCAG 2.2 Level AA** as the baseline for all products. This:
+- Satisfies the EAA requirements
+- Meets the de facto ADA standard
+- Covers EN 301 549 and Section 508
+- Represents a responsible, defensible accessibility standard
+- Benefits all users, not just those with disabilities

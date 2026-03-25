@@ -154,5 +154,13 @@ Always report:
 5. Whether the repository is now ready for premium UI workflow
 6. Any conflicts, ambiguities, or manual follow-up needed
 
+## Related Skills
+
+- **design-system-review** — System-Bewertung: Nach dem Setup bewertet der Review, ob das eingerichtete System die Qualitätsanforderungen erfüllt.
+- **token-architecture** — Token-Definitionen: Das Setup legt die Grundstruktur fest — die Token-Architektur definiert anschließend das konkrete Token-System.
+- **ui-component-design** — Komponenten-Design: Nach dem Setup werden die ersten Komponenten nach den etablierten Standards entworfen.
+- **brand-ui-alignment** — Brand-Ausrichtung: Das Setup sollte die Brand-Definition berücksichtigen, damit alle nachfolgenden Skills darauf aufbauen können.
+- **premium-ui-refinement** — Premium-Qualität: Definiert die Premium-Standards, die das Setup als Qualitätsmaßstab in AGENTS.md/CLAUDE.md verankert.
+
 ## Final Standard
 A successful setup run leaves the repository with a clear, durable, and agent-friendly operating model for premium UI and design-system development. Every agent — regardless of platform — must be able to read the root files and immediately understand the quality bar, the available skills, and the recommended workflows. No ambiguity, no guesswork, no generic filler.

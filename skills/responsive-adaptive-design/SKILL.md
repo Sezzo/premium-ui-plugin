@@ -74,5 +74,14 @@ Always structure the output as:
 10. Layout Shift Prevention
 11. Testing Checklist
 
+## Related Skills
+
+- **screen-composition-design** — Screen-Komposition: Responsive Layouts bauen auf den Kompositionsregeln auf — Hierarchie und Density müssen sich über Viewports hinweg anpassen.
+- **ui-component-design** — Komponenten-Design: Komponenten müssen responsive Varianten definieren (z.B. kompakte Mobile-Varianten, erweiterte Desktop-Varianten).
+- **component-implementation-spec** — Implementierungsdetails: Container Queries, Breakpoint-Verhalten und responsive CSS werden hier technisch spezifiziert.
+- **token-architecture** — Token-Definitionen: Responsive Spacing- und Typography-Scales werden als Tokens definiert (z.B. mit clamp() oder Viewport-abhängigen Werten).
+- **accessibility** — Barrierefreiheit: Touch-Targets, Zoom-Verhalten und Reflow müssen WCAG-konform sein.
+- **premium-ui-refinement** — Premium-Qualität: Responsive Übergänge und Animationen müssen auf allen Viewports Premium-Qualität bewahren.
+
 ## Final Standard
 A strong responsive strategy makes every viewport feel intentionally designed — not like a compromise. Users should never feel they are using a "lesser version" of the product on any device.

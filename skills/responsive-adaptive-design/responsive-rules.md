@@ -1,164 +1,408 @@
-# Responsive Design Rules
+# Responsive & Adaptive Design Rules
+
+This document defines the rules, techniques, and patterns for building responsive interfaces that maintain premium quality across all viewport sizes.
+
+## Core Principle
+Responsive design is not about making things fit — it is about maintaining hierarchy, usability, and quality at every viewport size. A premium product must feel intentionally designed for each breakpoint, not squeezed into it.
 
 ## Breakpoint System
 
 ### Standard Breakpoints
+```css
+/* Mobile-first breakpoints */
+--breakpoint-sm: 640px;    /* Large phones, small tablets */
+--breakpoint-md: 768px;    /* Tablets */
+--breakpoint-lg: 1024px;   /* Small desktops, landscape tablets */
+--breakpoint-xl: 1280px;   /* Standard desktops */
+--breakpoint-2xl: 1440px;  /* Wide desktops */
+```
 
-| Token | Value | Viewport Class | Columns | Margins | Gutter |
-|-------|-------|---------------|---------|---------|--------|
-| `breakpoint.sm` | 640px | Mobile landscape | 4 | 16px | 16px |
-| `breakpoint.md` | 768px | Tablet portrait | 8 | 24px | 24px |
-| `breakpoint.lg` | 1024px | Tablet landscape / small desktop | 12 | 32px | 24px |
-| `breakpoint.xl` | 1280px | Desktop | 12 | 40px | 32px |
-| `breakpoint.2xl` | 1536px | Large desktop | 12 | auto (max-width container) | 32px |
+### Breakpoint Usage Rules
+- **Mobile-first:** Write base styles for mobile, enhance with `min-width` media queries
+- **Content-driven:** Breakpoints should align with where the content breaks, not arbitrary device widths
+- **Minimum 3 layouts:** Mobile, tablet, desktop. Wide desktop is optional but recommended.
+- **No breakpoint gaps:** Every pixel between 320px and 1920px must be accounted for
 
-### Breakpoint Selection Rules
+## Layout Grid
 
-- Choose breakpoints based on where content breaks, not device names
-- Never add a breakpoint "just in case" — every breakpoint must solve a real layout problem
-- Test content at every 50px increment between breakpoints to catch edge cases
-- Container queries preferred for component-level adaptation; media queries for page-level layout
+```css
+:root {
+  --grid-columns-mobile: 4;
+  --grid-columns-tablet: 8;
+  --grid-columns-desktop: 12;
+  
+  --grid-gutter-mobile: 16px;
+  --grid-gutter-tablet: 24px;
+  --grid-gutter-desktop: 24px;
+  --grid-gutter-wide: 32px;
+  
+  --grid-margin-mobile: 16px;
+  --grid-margin-tablet: 32px;
+  --grid-margin-desktop: 48px;
+  --grid-margin-wide: auto;    /* Centered with max-width */
+  
+  --grid-max-width: 1360px;
+}
+```
 
-## Mobile-First Principles
+## Container Queries
 
-### Mandatory
+Container queries allow components to adapt to their container size rather than the viewport. Use them for components that appear in different layout contexts.
 
-1. **Base styles target mobile** — all CSS starts at the smallest viewport
-2. **Progressive enhancement** — add complexity as viewport grows, never subtract
-3. **Content-first** — mobile forces content priority decisions that benefit all viewports
-4. **Touch-first** — assume touch input as default, enhance for pointer devices
+```css
+/* Define a container */
+.card-grid {
+  container-type: inline-size;
+  container-name: card-grid;
+}
 
-### Content Priority
+/* Component adapts to container, not viewport */
+@container card-grid (min-width: 600px) {
+  .card {
+    flex-direction: row;  /* Side-by-side layout when container is wide */
+  }
+}
 
-- Define a content priority matrix for every screen
-- Priority 1 content: visible on all viewports, no exceptions
-- Priority 2 content: visible on tablet+, collapsed/accordion on mobile
-- Priority 3 content: visible on desktop+, accessible via "Show more" on smaller viewports
-- Never hide functionality — only restructure access patterns
+@container card-grid (max-width: 599px) {
+  .card {
+    flex-direction: column;  /* Stacked layout when container is narrow */
+  }
+}
+```
 
-## Layout Strategy
+### When to Use Container Queries vs Media Queries
+| Use Case | Approach |
+|----------|---------|
+| Page-level layout changes | Media queries (`@media`) |
+| Component in sidebar vs main content | Container queries (`@container`) |
+| Navigation responsive behavior | Media queries |
+| Card layout within a grid | Container queries |
+| Typography scale changes | Media queries |
+| Component internal layout | Container queries |
 
-### Grid Behavior
+## Modern CSS Techniques
 
-| Viewport | Strategy | Notes |
-|----------|----------|-------|
-| < 640px | Single column, full-width | Stack everything vertically |
-| 640–767px | Single column with wider content area | Slight breathing room |
-| 768–1023px | 2-column where appropriate | Sidebar collapses to top/bottom |
-| 1024–1279px | Full grid, sidebar visible | Standard desktop layout |
-| 1280px+ | Full grid, max-width container | Prevent ultra-wide line lengths |
+### Fluid Typography
+```css
+/* Fluid font size: 16px at 320px viewport → 20px at 1440px viewport */
+.body-text {
+  font-size: clamp(1rem, 0.929rem + 0.357vw, 1.25rem);
+}
 
-### Component Adaptation Patterns
+/* Fluid heading: 24px → 36px */
+.heading {
+  font-size: clamp(1.5rem, 1.143rem + 1.786vw, 2.25rem);
+}
+```
 
-| Pattern | Description | Example |
-|---------|-------------|---------|
-| **Stack** | Horizontal → vertical | Card row → card stack |
-| **Collapse** | Visible → accordion/expandable | Sidebar → hamburger menu |
-| **Reflow** | Grid rearrangement | 3-col → 2-col → 1-col |
-| **Truncate** | Full → abbreviated | Full label → icon-only |
-| **Promote** | Secondary → primary position | Mobile: key actions move to thumb zone |
-| **Defer** | Eager → lazy | Desktop: show all; Mobile: load on demand |
+### Fluid Spacing
+```css
+/* Fluid section spacing: 32px → 64px */
+.section {
+  padding-block: clamp(2rem, 1.143rem + 4.286vw, 4rem);
+}
 
-## Typography Scaling
+/* Fluid container margin */
+.container {
+  padding-inline: clamp(1rem, 0.429rem + 2.857vw, 3rem);
+}
+```
 
-### Scale Adjustments
+### Intrinsic Sizing with Grid
+```css
+/* Auto-fit grid: cards fill available space, minimum 280px each */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
 
-| Token | Mobile | Tablet | Desktop |
-|-------|--------|--------|---------|
-| `typography.display.lg` | 28px | 32px | 36px |
-| `typography.display.md` | 24px | 28px | 30px |
-| `typography.heading.lg` | 20px | 22px | 24px |
-| `typography.heading.md` | 18px | 18px | 20px |
-| `typography.heading.sm` | 16px | 16px | 18px |
-| `typography.body.lg` | 16px | 16px | 16px |
-| `typography.body.md` | 14px | 14px | 14px |
-| `typography.body.sm` | 12px | 12px | 12px |
+/* Sidebar layout: sidebar fixed, content fills remaining space */
+.layout-with-sidebar {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--space-xl);
+}
 
-### Rules
+@media (max-width: 1023px) {
+  .layout-with-sidebar {
+    grid-template-columns: 1fr;  /* Stack on tablet/mobile */
+  }
+}
+```
 
-- Body text does not scale — 14px/16px is readable at all viewports
-- Only display and heading tokens scale down on mobile
-- Line length: 45–75 characters optimal; enforce `max-width` on text containers
-- Never use viewport units (vw) for font size — breaks zoom accessibility
+### Logical Properties
+```css
+/* Use logical properties for internationalization support */
+.card {
+  padding-block: var(--space-lg);      /* top/bottom */
+  padding-inline: var(--space-md);     /* left/right (flips in RTL) */
+  margin-block-end: var(--space-lg);   /* margin-bottom (logical) */
+}
+```
 
-## Spacing Scaling
+## Responsive Patterns for Common Components
 
-| Token | Mobile | Tablet+ |
-|-------|--------|---------|
-| `space.xs` | 4px | 4px |
-| `space.sm` | 8px | 8px |
-| `space.md` | 12px | 16px |
-| `space.lg` | 16px | 24px |
-| `space.xl` | 24px | 32px |
-| `space.2xl` | 32px | 48px |
-| `space.3xl` | 48px | 64px |
+### Tables
+Tables are the most challenging responsive component. Three strategies:
+
+**Strategy 1: Column Hiding (recommended for data tables)**
+```css
+/* Hide low-priority columns progressively */
+.col-priority-3 { display: none; }  /* Hidden on mobile */
+
+@media (min-width: 768px) {
+  .col-priority-3 { display: table-cell; }  /* Show on tablet */
+}
+
+/* Always visible: name, primary data, actions */
+/* Hidden on mobile: email, date, secondary data */
+/* Hidden on tablet: metadata, tertiary data */
+```
+
+**Strategy 2: Card Transformation (recommended for list views)**
+```css
+@media (max-width: 767px) {
+  .data-table { display: block; }
+  .data-table thead { display: none; }
+  .data-table tr {
+    display: block;
+    padding: var(--space-md);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-sm);
+  }
+  .data-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-xs) 0;
+  }
+  .data-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+}
+```
+
+**Strategy 3: Horizontal Scroll (use sparingly)**
+```css
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Scroll indicator shadow */
+.table-wrapper {
+  background:
+    linear-gradient(to right, white 30%, transparent),
+    linear-gradient(to left, white 30%, transparent),
+    linear-gradient(to right, rgba(0,0,0,0.1), transparent),
+    linear-gradient(to left, rgba(0,0,0,0.1), transparent);
+  background-position: left, right, left, right;
+  background-size: 40px 100%, 40px 100%, 20px 100%, 20px 100%;
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+}
+```
+
+### Navigation
+```css
+/* Desktop: horizontal nav */
+.nav { display: flex; gap: var(--space-lg); }
+.nav-drawer { display: none; }
+.nav-hamburger { display: none; }
+
+/* Mobile: hamburger + drawer */
+@media (max-width: 767px) {
+  .nav { display: none; }
+  .nav-hamburger { display: flex; }
+  
+  .nav-drawer {
+    position: fixed;
+    inset: 0;
+    background: var(--color-surface-default);
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+    z-index: 100;
+  }
+  
+  .nav-drawer--open {
+    transform: translateX(0);
+  }
+}
+
+/* Tablet: scrollable horizontal nav */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .nav {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+}
+```
+
+### Forms
+```css
+/* Desktop: 2-column form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md) var(--space-lg);
+  max-width: 720px;
+}
+
+/* Full-width fields span both columns */
+.form-field--full {
+  grid-column: 1 / -1;
+}
+
+/* Mobile: single column */
+@media (max-width: 767px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+### Modals
+```css
+/* Desktop: centered modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 560px;
+  max-height: 80vh;
+  border-radius: var(--radius-xl);
+  overflow-y: auto;
+}
+
+/* Mobile: full-screen modal */
+@media (max-width: 767px) {
+  .modal {
+    padding: 0;
+  }
+  
+  .modal-content {
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+}
+```
+
+### Filter Sidebar
+```css
+/* Desktop: persistent sidebar */
+.filter-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: var(--space-lg);
+}
+
+/* Mobile: bottom sheet */
+@media (max-width: 1023px) {
+  .filter-sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 80vh;
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    transform: translateY(100%);
+    transition: transform var(--transition-normal);
+    z-index: 100;
+    background: var(--color-surface-default);
+    box-shadow: var(--elevation-lg);
+  }
+  
+  .filter-sidebar--open {
+    transform: translateY(0);
+  }
+}
+```
 
 ## Touch Target Rules
 
-### Minimum Sizes
+```css
+/* Minimum touch target: 44×44px (WCAG 2.5.8) */
+@media (pointer: coarse) {
+  .interactive-element {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Increase spacing between touch targets */
+  .button + .button {
+    margin-left: var(--space-sm);  /* Prevent accidental taps */
+  }
+  
+  /* Larger checkbox/radio targets */
+  .form-check-label {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: var(--space-xs) 0;
+  }
+}
+```
 
-- **All interactive elements**: 44×44px minimum touch target (WCAG 2.5.8)
-- **Inline links in text**: Exempt from size requirement but must have sufficient line-height
-- **Icon buttons**: Visual size can be smaller if touch target (padding) meets 44px
-- **Spacing between targets**: Minimum 8px gap to prevent mis-taps
+## Performance Considerations
 
-### Thumb Zone Optimization
+### Image Optimization
+```html
+<!-- Responsive images with srcset -->
+<img
+  src="image-400.webp"
+  srcset="image-400.webp 400w, image-800.webp 800w, image-1200.webp 1200w"
+  sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+  alt="Description"
+  loading="lazy"
+/>
+```
 
-- Primary actions in bottom 1/3 of mobile viewport (thumb-reachable)
-- Destructive actions away from thumb zone (prevent accidental taps)
-- Navigation: bottom tab bar preferred over top hamburger on mobile
+### CSS Containment
+```css
+/* Improve rendering performance for off-screen content */
+.card {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 300px;  /* Estimated height */
+}
+```
 
-## Navigation Patterns
+### Reduced Motion
+```css
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
 
-| Viewport | Pattern | Notes |
-|----------|---------|-------|
-| Mobile (< 768px) | Bottom tab bar (≤5 items) or hamburger | Primary actions always visible |
-| Tablet (768–1023px) | Collapsible sidebar or top nav | Context-dependent |
-| Desktop (1024px+) | Persistent sidebar or top nav | Full navigation visible |
-
-### Rules
-
-- Bottom navigation: max 5 items, icon + label, active state clearly marked
-- Hamburger menu: only when navigation items exceed 5 and viewport is constrained
-- Never hide primary navigation behind a hamburger on desktop
-- Breadcrumbs: show on desktop, truncate to "< Back" on mobile
-
-## Image & Media
-
-### Responsive Images
-
-- Use `srcset` with width descriptors for all content images
-- Provide at minimum: 1x, 2x, and 3x density variants
-- Art direction: use `<picture>` element for different crops per viewport
-- Lazy load all images below the fold (`loading="lazy"`)
-- Always set explicit `width` and `height` attributes to prevent layout shift
-
-### Video & Embeds
-
-- Use `aspect-ratio` CSS property for responsive containers
-- Autoplay only on desktop, and only if muted
-- Provide poster images for all video elements
-
-## Layout Shift Prevention
-
-### Critical Rules
-
-1. **Reserve space** for all dynamic content (images, ads, embeds)
-2. **Set dimensions** on all media elements before load
-3. **Avoid inserting content above existing content** after initial render
-4. **Font loading**: Use `font-display: swap` with size-adjusted fallback fonts
-5. **Skeleton screens** for async content — match exact dimensions of final content
-6. **Target CLS score**: < 0.1 (Good)
-
-## Testing Checklist
-
-- [ ] All layouts tested at: 320px, 375px, 414px, 768px, 1024px, 1280px, 1440px, 1920px
-- [ ] No horizontal scrolling at any viewport width ≥ 320px
-- [ ] All touch targets meet 44×44px minimum on touch devices
-- [ ] Typography remains readable (no text smaller than 12px)
-- [ ] No content is inaccessible on any viewport (hidden without alternative access)
-- [ ] Images load appropriate size per viewport (no desktop images on mobile)
-- [ ] Navigation is usable and discoverable on all viewport classes
-- [ ] Forms are fully usable on mobile (proper input types, no tiny fields)
-- [ ] CLS score < 0.1 on all viewport sizes
-- [ ] Zoom to 200% does not break layout or hide content
+## Responsive Testing Checklist
+- [ ] Test at 320px (smallest supported mobile)
+- [ ] Test at 375px (common mobile)
+- [ ] Test at 768px (tablet portrait)
+- [ ] Test at 1024px (tablet landscape / small desktop)
+- [ ] Test at 1280px (standard desktop)
+- [ ] Test at 1440px (wide desktop)
+- [ ] Test at 1920px (full HD)
+- [ ] Test with zoom at 200% (accessibility requirement)
+- [ ] Test with `prefers-reduced-motion: reduce`
+- [ ] Test with `pointer: coarse` (touch devices)
+- [ ] Test landscape orientation on mobile
+- [ ] Verify no horizontal scroll at any breakpoint

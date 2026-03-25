@@ -93,5 +93,14 @@ Always structure your output as:
 10. Governance Rules for Future Token Creation
 11. Concrete Example Token Structure
 
+## Related Skills
+
+- **premium-ui-refinement** — Premium-Qualität: Tokens definieren die Werte, die Refinement verwendet — Farben, Spacing, Typografie und Surface-Behandlungen.
+- **ui-component-design** — Komponenten-Design: Komponenten referenzieren semantische Tokens — die Token-Architektur muss alle benötigten Component-Tokens bereitstellen.
+- **component-implementation-spec** — Implementierungsdetails: CSS Custom Properties aus der Token-Architektur werden in der Implementierungsspezifikation direkt verwendet.
+- **brand-ui-alignment** — Brand-Ausrichtung: Brand-Farben, Typografie und Spacing-Entscheidungen werden als Tokens kodifiziert und damit systematisch anwendbar.
+- **design-system-setup** — System-Setup: Das Setup verankert die Token-Struktur im Repository und macht sie für alle Skills verfügbar.
+- **accessibility** — Barrierefreiheit: Farb-Tokens müssen WCAG-konforme Kontrastverhältnisse sicherstellen.
+
 ## Final Standard
 A strong token architecture should reduce ambiguity, reduce visual drift, and make premium UI quality easier to maintain across future work.

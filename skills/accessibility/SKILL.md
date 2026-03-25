@@ -72,5 +72,14 @@ Always structure the output as:
 12. Issue Priority Matrix
 13. Remediation Recommendations
 
+## Related Skills
+
+- **ux-consistency-audit** — Konsistenzprüfung: Accessibility-Patterns (Focus-States, Error-Handling, Keyboard-Navigation) müssen über alle Screens hinweg einheitlich sein.
+- **ui-component-design** — Komponenten-Design: Accessibility-Anforderungen (ARIA-Rollen, Keyboard-Support, Kontraste) sollten bereits beim Komponenten-Design berücksichtigt werden.
+- **component-implementation-spec** — Implementierungsdetails: Spezifiziert die technische Umsetzung von ARIA-Attributen, Focus-Management und Keyboard-Interaktionen.
+- **token-architecture** — Token-Definitionen: Farb-Tokens müssen WCAG-konforme Kontrastverhältnisse sicherstellen.
+- **responsive-adaptive-design** — Responsive Design: Touch-Targets, Zoom-Verhalten und Viewport-Anpassungen haben direkte Accessibility-Auswirkungen.
+- **design-critique** — Design-Bewertung: Accessibility-Aspekte sollten Teil jeder Design-Kritik sein.
+
 ## Final Standard
 A truly accessible product is indistinguishable from a well-designed product. Accessibility improvements benefit all users — better focus states, clearer hierarchy, more predictable interactions. If your accessibility work makes the product feel worse for sighted users, you are doing it wrong.

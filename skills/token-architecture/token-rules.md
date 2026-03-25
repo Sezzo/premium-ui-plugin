@@ -251,6 +251,120 @@ Do not create token structures centered around:
 
 Premium UI should emerge from disciplined typography, spacing, surfaces, hierarchy, and restrained color logic.
 
+## CSS Custom Properties Implementation
+
+Tokens should be implemented as CSS Custom Properties (CSS variables) for maximum flexibility and runtime theming support.
+
+### Three-Tier Token Structure in CSS
+
+```css
+/* === Tier 1: Primitive Tokens === */
+/* Raw values — never used directly in components */
+:root {
+  --primitive-blue-50: #EFF6FF;
+  --primitive-blue-500: #3B82F6;
+  --primitive-blue-600: #2563EB;
+  --primitive-blue-700: #1D4ED8;
+  --primitive-gray-50: #F9FAFB;
+  --primitive-gray-100: #F3F4F6;
+  --primitive-gray-200: #E5E7EB;
+  --primitive-gray-500: #6B7280;
+  --primitive-gray-900: #111827;
+  --primitive-green-500: #059669;
+  --primitive-red-500: #DC2626;
+}
+
+/* === Tier 2: Semantic Tokens === */
+/* Meaning-based — used in most component styles */
+:root {
+  /* Text */
+  --color-text-primary: var(--primitive-gray-900);
+  --color-text-secondary: var(--primitive-gray-500);
+  --color-text-on-action: #FFFFFF;
+
+  /* Surfaces */
+  --color-surface-default: #FFFFFF;
+  --color-surface-secondary: var(--primitive-gray-50);
+  --color-surface-hover: var(--primitive-gray-100);
+
+  /* Actions */
+  --color-action-primary: var(--primitive-blue-600);
+  --color-action-primary-hover: var(--primitive-blue-700);
+
+  /* Borders */
+  --color-border-default: var(--primitive-gray-200);
+  --color-border-focus: var(--primitive-blue-500);
+
+  /* Status */
+  --color-status-success: var(--primitive-green-500);
+  --color-status-error: var(--primitive-red-500);
+}
+
+/* === Tier 3: Component Tokens (optional) === */
+/* Only when a component needs specific overrides */
+:root {
+  --button-primary-bg: var(--color-action-primary);
+  --button-primary-bg-hover: var(--color-action-primary-hover);
+  --button-primary-text: var(--color-text-on-action);
+  --button-radius: var(--radius-md);
+}
+```
+
+### Dark Mode via Token Reassignment
+
+```css
+/* Dark mode: reassign semantic tokens, primitives stay the same */
+[data-theme="dark"] {
+  --color-text-primary: var(--primitive-gray-50);
+  --color-text-secondary: var(--primitive-gray-400);
+  --color-surface-default: var(--primitive-gray-900);
+  --color-surface-secondary: var(--primitive-gray-800);
+  --color-surface-hover: var(--primitive-gray-700);
+  --color-border-default: var(--primitive-gray-700);
+}
+/* Components using semantic tokens automatically adapt — no component CSS changes needed */
+```
+
+### Spacing and Typography as Custom Properties
+
+```css
+:root {
+  /* Spacing scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Typography scale */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.5rem;     /* 24px */
+  --font-size-2xl: 1.875rem;  /* 30px */
+
+  /* Radius scale */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Elevation */
+  --elevation-sm: 0 1px 2px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.06);
+  --elevation-md: 0 2px 4px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.08);
+  --elevation-lg: 0 4px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.1);
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+```
+
 ## Required Quality Questions
 For every token decision ask:
 - Is this reusable?

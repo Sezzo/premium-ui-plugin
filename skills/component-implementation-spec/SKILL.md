@@ -80,5 +80,13 @@ Always structure the output as:
 14. Edge Cases
 15. Acceptance Criteria
 
+## Related Skills
+
+- **ui-component-design** — Komponenten-Design: Liefert die Design-Spezifikation (States, Varianten, Anatomy), die hier in eine technische Implementierungsspezifikation überführt wird.
+- **token-architecture** — Token-Definitionen: Alle CSS Custom Properties und Design Tokens, die in der Implementierung verwendet werden, stammen aus der Token-Architektur.
+- **accessibility** — Barrierefreiheit: ARIA-Attribute, Keyboard-Navigation und Focus-Management müssen in der Implementierungsspezifikation vollständig abgedeckt sein.
+- **responsive-adaptive-design** — Responsive Design: Breakpoint-Verhalten und Container Queries der Komponente werden hier technisch spezifiziert.
+- **premium-ui-refinement** — Premium-Qualität: Mikrointeraktionen, Transitions und Surface-Behandlungen aus dem Refinement fließen in die Implementierungsdetails ein.
+
 ## Final Standard
 A strong implementation spec should make it difficult to build the component incorrectly.
